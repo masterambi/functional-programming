@@ -19,7 +19,7 @@ type Compose = <A, B ,C> (
   f: (x: B) => C, 
   g: (x: A) => B
 ) => (x: A) => C
-const compose: Compose = (f, g) => x => f(g(x))
+export const compose: Compose = (f, g) => x => f(g(x))
 
 const increment_then_tostring2: IncrementThenToString = compose(tostring, increment)
 
