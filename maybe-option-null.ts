@@ -13,21 +13,21 @@ const composed = compose(increment, divideTwo)
 console.log(composed(8))
 console.log(composed(0)) // Infinity
 
-interface Some<A> {
+export interface Some<A> {
   _tag: "Some"
   value: A
 }
-interface None {
+export interface None {
   _tag: "None"
 }
 
-type Option<A> = Some<A> | None;
+export type Option<A> = Some<A> | None;
 
 
-const some = <A>(x: A): Option<A> => ({ _tag: 'Some', value: x })
-const none: Option<never> = { _tag: "None" }
+export const some = <A>(x: A): Option<A> => ({ _tag: 'Some', value: x })
+export const none: Option<never> = { _tag: "None" }
 
-const isNone = <A>(x: Option<A>): x is None => x._tag === "None"
+export const isNone = <A>(x: Option<A>): x is None => x._tag === "None"
 
 type DivideTwo2 = (x: number) => Option<number>
 const divideTwo2: DivideTwo2 = x => x === 0 ? none : some(2/x)
